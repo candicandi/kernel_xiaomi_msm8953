@@ -6111,6 +6111,7 @@ static int smbchg_battery_get_property(struct power_supply *psy,
 		val->intval = get_prop_batt_health(chip);
 		break;
 	case POWER_SUPPLY_PROP_TECHNOLOGY:
+#if (defined CONFIG_MACH_XIAOMI_TISSOT) || (defined CONFIG_MACH_XIAOMI_TIFFANY)
 		val->intval = POWER_SUPPLY_TECHNOLOGY_LIPO;
 		break;
 	case POWER_SUPPLY_PROP_FLASH_CURRENT_MAX:
@@ -6286,7 +6287,7 @@ static irqreturn_t batt_hot_handler(int irq, void *_chip)
 {
 	struct smbchg_chip *chip = _chip;
 	u8 reg = 0;
-#if (defined CONFIG_MACH_XIAOMI_MIDO) || (defined CONFIG_MACH_XIAOMI_TISSOT) || (defined CONFIG_MACH_XIAOMI_SAKURA) || (defined CONFIG_MACH_XIAOMI_DAISY) || (defined CONFIG_MACH_XIAOMI_VINCE)
+#if (defined CONFIG_MACH_XIAOMI_MIDO) || (defined CONFIG_MACH_XIAOMI_TISSOT) || (defined CONFIG_MACH_XIAOMI_SAKURA) || (defined CONFIG_MACH_XIAOMI_DAISY) || (defined CONFIG_MACH_XIAOMI_VINCE) || (defined CONFIG_MACH_XIAOMI_TIFFANY) 
 	int rc;
 	/* set the warm float voltage compensation,set the warm float voltage to 4.1V */
 	if (chip->float_voltage_comp != -EINVAL) {
@@ -6315,7 +6316,7 @@ static irqreturn_t batt_cold_handler(int irq, void *_chip)
 {
 	struct smbchg_chip *chip = _chip;
 	u8 reg = 0;
-#if (defined CONFIG_MACH_XIAOMI_MIDO) || (defined CONFIG_MACH_XIAOMI_TISSOT) || (defined CONFIG_MACH_XIAOMI_SAKURA) || (defined CONFIG_MACH_XIAOMI_DAISY) || (defined CONFIG_MACH_XIAOMI_VINCE)
+#if (defined CONFIG_MACH_XIAOMI_MIDO) || (defined CONFIG_MACH_XIAOMI_TISSOT) || (defined CONFIG_MACH_XIAOMI_SAKURA) || (defined CONFIG_MACH_XIAOMI_DAISY) || (defined CONFIG_MACH_XIAOMI_VINCE) || (defined CONFIG_MACH_XIAOMI_TIFFANY)
 	int rc;
 	/* set the cool float voltage compensation ,set the cool float voltage to 4.4V*/
 	rc = smbchg_float_voltage_comp_set(chip, 0);
@@ -8474,6 +8475,7 @@ static int smbchg_probe(struct platform_device *pdev)
 		goto votables_cleanup;
 	}
 
+#if (defined CONFIG_MACH_XIAOMI_TISSOT) || (defined CONFIG_MACH_XIAOMI_TIFFANY)
 	chip->hvdcp_not_supported = true;
 
 	rc = smbchg_check_chg_version(chip);
