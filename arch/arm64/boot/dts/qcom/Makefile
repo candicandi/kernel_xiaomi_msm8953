@@ -536,6 +536,7 @@ ifeq ($(CONFIG_MACH_XIAOMI_MSM8953),y)
 dtb-$(CONFIG_MACH_XIAOMI_DAISY) += msm8953-qrd-sku3-daisy.dtb
 dtb-$(CONFIG_MACH_XIAOMI_MIDO) += msm8953-qrd-sku3-mido.dtb
 dtb-$(CONFIG_MACH_XIAOMI_SAKURA) += msm8953-qrd-sku3-sakura.dtb
+dtb-$(CONFIG_MACH_XIAOMI_TIFFANY) += msm8953-qrd-sku3-tiffany.dtb
 dtb-$(CONFIG_MACH_XIAOMI_TISSOT) += msm8953-qrd-sku3-tissot.dtb
 dtb-$(CONFIG_MACH_XIAOMI_VINCE) += msm8953-qrd-sku3-vince.dtb
 dtb-$(CONFIG_MACH_XIAOMI_YSL) += msm8953-pmi8940-mtp-ysl.dtb
